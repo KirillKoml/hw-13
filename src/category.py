@@ -12,18 +12,5 @@ class Category:
         self.all_quantity_category = 1
 
         Category.all_quantity_unique_product += 1
-
-
-class Product:
-    name: str
-    description: str
-    price: float
-    quantity: int
-
-    def __init__(self, name, description, price, quantity):
-        self.name = name
-        self.description = description
-        self.price = float(price)
-        self.quantity = quantity
-
+        Category.all_quantity_category += 1
 
