@@ -8,9 +8,25 @@ class Category:
     def __init__(self, name, description, product):
         self.name = name
         self.description = description
-        self.product = product
+        self.__product = product
         self.all_quantity_category = 1
 
         Category.all_quantity_unique_product += 1
-        Category.all_quantity_category += 1
+        Category.all_quantity_category += len(self.__product)
 
+
+    def products(self):
+        return self.__product
+
+    @property
+    def updated_product(self):
+        updated_product = ''
+        for product in self.__products:
+            updated_product.append(f'{product.name},{product.price} руб. Остаток: {product.quantity} шт.')
+        return updated_product
+
+
+    @updated_product.setter
+    def updated_product(self, item):
+        self.__product.append(item)
+        
