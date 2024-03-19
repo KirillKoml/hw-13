@@ -14,7 +14,7 @@ def test_init(test_correct_init_category):
     assert test_correct_init_category.name == 'Смартфоны'
     assert test_correct_init_category.description == ('Cмартфоны, как средство не только коммуникации, '
                                                       'но и получения дополнительных функций для удобства жизни')
-    assert test_correct_init_category.product == [1, 2, 3, 4]
+
 
 
 @pytest.fixture

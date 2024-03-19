@@ -13,16 +13,20 @@ class Product:
     def __repr__(self):
         return f'Product {self.name}, {self.description}, {self.__price}, {self.quantity}'
 
+    def new_product(function):
+        def inner(*args, **kwargs):
+            result = function(*args, **kwargs)
+            return result
 
-    @classmethod
+        return inner
+
+    @new_product
     def add_new_product(cls, name, description, price, quantity):
-        return cls(name, description, price, quantity
-
+        return cls(name, description, price, quantity)
 
     @property
     def price(self):
         return self.__price
-
 
     @price.setter
     def price(self, new_price):
