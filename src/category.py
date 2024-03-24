@@ -11,8 +11,8 @@ class Category:
         self.__product = product
         self.all_quantity_category = 1
 
-        Category.all_quantity_unique_product += 1
-        Category.all_quantity_category += len(self.__product)
+        Category.all_quantity_unique_product += len(self.__product)
+        Category.all_quantity_category += 1
 
     def product(self):
         return self.__product
