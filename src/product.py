@@ -10,8 +10,11 @@ class Product:
         self.__price = float(price)
         self.quantity = quantity
 
-    def __repr__(self):
-        return f'Product {self.name}, {self.description}, {self.__price}, {self.quantity}'
+    def __str__(self):
+        return f'Продукт: {self.name}, {self.description}, {self.__price}, руб. Остаток: {self.quantity} шт'
+
+    def __add__(self, other):
+        return self.name + other.name * self.quantity
 
     @classmethod
     def add_new_product(cls, **kwargs):

@@ -17,6 +17,15 @@ class Category:
     def product(self):
         return self.__product
 
+    def __str__(self):
+        return f'{self.name}, количество продуктов:{len(self)} шт'
+    def __len__(self):
+        num_product = 0
+        for i in self.__product:
+            num_product + i.quantity
+        return num_product
+
+
     @property
     def updated_product(self):
         updated_product = ''
