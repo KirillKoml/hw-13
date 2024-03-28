@@ -36,5 +36,5 @@ def test_correct_init_numb():
 
 
 def test_summ_numb(test_correct_init_numb):
-    assert test_correct_init_numb.all_quantity_unique_product == 2
+    assert test_correct_init_numb.all_quantity_unique_product == 8
     assert test_correct_init_numb.all_quantity_category == 1
