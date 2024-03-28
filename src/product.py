@@ -10,11 +10,14 @@ class Product:
         self.__price = float(price)
         self.quantity = quantity
 
+    def __len__(self):
+        return self.quantity
+
     def __str__(self):
-        return f'Продукт: {self.name}, {self.description}, {self.__price}, руб. Остаток: {self.quantity} шт'
+        return f'{self.name}, {self.__price}, руб. Остаток: {self.quantity} шт'
 
     def __add__(self, other):
-        return self.name + other.name * self.quantity
+        return f'{self.__price} * {self.quantity} + {other.__price} * {other.quantity}'
 
     @classmethod
     def add_new_product(cls, **kwargs):
