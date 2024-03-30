@@ -18,7 +18,13 @@ class Product:
         return f'{self.name}, {self.__price}, руб. Остаток: {self.quantity} шт'
 
     def __add__(self, other):
-        return f'{self.__price} * {self.quantity} + {other.__price} * {other.quantity}'
+        if isinstance(other, type(self)):
+            total_price_self = self.price * self.quantity
+            total_price_other = other.price * other.quantity
+            total_price = total_price_self + total_price_other
+            return total_price
+        else:
+            raise TypeError("Нельзя складывать продукты разных типов или объекты других классов.")
 
     @classmethod
     def add_new_product(cls, **kwargs):

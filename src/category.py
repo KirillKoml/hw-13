@@ -9,19 +9,21 @@ class Category:
         self.name = name
         self.description = description
         self.__product = product
-        self.all_quantity_category = 1
-        Category.all_quantity_category += 1
+        self.all_quantity_category += 1
+        Category.all_quantity_category += len(set(self.__products))
+
+    def product(self,products):
+        self.__product.append(products)
+        self.all_quantity_unique_product += 1
+
+    def __len__(self):
+        count_products = 0
+        for product in self.__product:
+            count_products += product.quantity
+        return count_products
 
     def __str__(self):
         return f'{self.name}, количество продуктов:{len(self)} шт'
-        
-    def product(self,products):
-        self.__product.append(products)
-
-    def __len__(self):
-        return len(self.__product)
-
-
 
     @property
     def updated_product(self):
