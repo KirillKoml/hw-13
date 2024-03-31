@@ -9,7 +9,6 @@ class Product:
         self.description = description
         self.__price = float(price)
         self.quantity = quantity
-        Category.all_quantity_unique_product.add(name)
         
     def __len__(self):
         return self.quantity

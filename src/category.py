@@ -1,6 +1,7 @@
 class Category:
     all_quantity_category = 0
     all_quantity_unique_product = set()
+    count_category = 0
     name: str
     description: str
     product: list
@@ -9,8 +10,12 @@ class Category:
         self.name = name
         self.description = description
         self.__product = product
-        self.all_quantity_category += 1
-        Category.all_quantity_category += len(set(self.__products))
+
+        Category.count_category += 1
+        Category.all_quantity_unique_product.update(set(self.product))
+        Category.all_quantity_category = len(Category.all_quantity_category)
+
+
 
     def product(self,products):
         self.__product.append(products)
