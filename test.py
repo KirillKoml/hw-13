@@ -4,18 +4,15 @@ from src.category import Category
 from src.product import Product
 
 
+
+
 @pytest.fixture
-def test_correct_init_category():
-    return Category("Смартфоны", "Cмартфоны, как средство не только коммуникации, "
-                                 "но и получения дополнительных функций для удобства жизни", [1, 2, 3, 4])
+def product():
+    return Product(name='Test', description='Test description', price=10.5, quantity=20)
 
-
-def test_init(test_correct_init_category):
-    assert test_correct_init_category.name == 'Смартфоны'
-    assert test_correct_init_category.description == ('Cмартфоны, как средство не только коммуникации, '
-                                                      'но и получения дополнительных функций для удобства жизни')
-
-
+@pytest.fixture
+def category(product):
+    return Category(name='Test', description='Test description', products=[product, product])
 
 @pytest.fixture
 def test_correct_init_product():
@@ -29,12 +26,7 @@ def test_init_for_second_class(test_correct_init_product):
     assert test_correct_init_product.quantity == 5
 
 
-@pytest.fixture
-def test_correct_init_numb():
-    return Category("Смартфоны", "Cмартфоны, как средство не только коммуникации, "
-                                 "но и получения дополнительных функций для удобства жизни", [1, 2, 3, 4])
-
-
+@pytest.fixture()
 def test_summ_numb(test_correct_init_numb):
     assert test_correct_init_numb.all_quantity_unique_product == 8
     assert test_correct_init_numb.all_quantity_category == 1
