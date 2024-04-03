@@ -4,11 +4,12 @@ class Product:
     price: float
     quantity: int
 
-    def __init__(self, name, description, price, quantity):
+    def __init__(self, name, description, price, quantity, colour):
         self.name = name
         self.description = description
         self.__price = float(price)
         self.quantity = quantity
+        self.colour = colour
         
     def __len__(self):
         return self.quantity
@@ -39,3 +40,20 @@ class Product:
             print('Цена введена некоректно')
         else:
             self.__price = new_price
+
+
+class Smartphone(Product):
+    def __init__(self, name, description, price, quantity, ram, model, memory, colour):
+        super().__init__(name, description, price, quantity)
+        self.ram = ram
+        self.model = model
+        self.memory = memory
+        self.colour = colour
+
+
+class LawnGrass(Product):
+    def __init__(self, name, description, price, quantity, manufacturer, growth_period, colour):
+        super().__init__(name, description, price, quantity)
+        self.manufacturer = manufacturer
+        self.growth_period = growth_period
+        self.colour = colour
