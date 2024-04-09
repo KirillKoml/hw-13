@@ -1,4 +1,21 @@
-class Category:
+from abc import abstractmethod, ABC
+
+
+class AbstractCategory(ABC):
+    @abstractmethod
+    def product(self):
+        pass
+
+    @abstractmethod
+    def __len__(self):
+        pass
+
+    @abstractmethod
+    def __str__(self):
+        pass
+
+
+class Category(AbstractCategory):
     all_quantity_category = 0
     all_quantity_unique_product = set()
     count_category = 0
@@ -15,9 +32,7 @@ class Category:
         Category.all_quantity_unique_product.update(set(self.product))
         Category.all_quantity_category = len(Category.all_quantity_category)
 
-
-
-    def product(self,products):
+    def product(self, products):
         self.__product.append(products)
         self.all_quantity_unique_product += 1
 
