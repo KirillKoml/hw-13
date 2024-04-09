@@ -1,18 +1,39 @@
-class Product:
+from abc import abstractmethod, ABC
+
+
+class Mixin:
+    def __init__(self, *args, **kwargs):
+        print(self.__class__.__name__, *args, **kwargs)
+
+
+class AbstractProduct(ABC):
+    @abstractmethod
+    def __repr__(self):
+        pass
+
+    def __str__(self):
+        pass
+
+
+class Product(Mixin, AbstractProduct):
     name: str
     description: str
     price: float
     quantity: int
 
-    def __init__(self, name, description, price, quantity, colour):
+    def __init__(self, name, description, price, quantity, colour, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.name = name
         self.description = description
         self.__price = float(price)
         self.quantity = quantity
         self.colour = colour
-        
+
     def __len__(self):
         return self.quantity
+
+    def __repr__(self):
+        pass
 
     def __str__(self):
         return f'{self.name}, {self.__price}, руб. Остаток: {self.quantity} шт'
