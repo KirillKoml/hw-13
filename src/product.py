@@ -2,16 +2,26 @@ from abc import abstractmethod, ABC
 
 
 class Mixin:
-    def __init__(self, *args, **kwargs):
-        print(self.__class__.__name__, *args, **kwargs)
+    def __init__(self, *args):
+        print(repr(self))
 
+    def __repr__(self):
+        object_attributes = ''
+        for k, v in self.__dict__.items():
+            object_attributes += f'{k}: {v},'
+        return f"создан объект со свойствами {object_attributes})"
 
 class AbstractProduct(ABC):
     @abstractmethod
     def __repr__(self):
         pass
 
+    @abstractmethod
     def __str__(self):
+        pass
+
+    @abstractmethod
+    def add_new_product(cls, **kwargs):
         pass
 
 
